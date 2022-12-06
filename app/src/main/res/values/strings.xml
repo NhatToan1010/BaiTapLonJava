@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">BaiTapLonJava</string>
+    // ----- Login Activity and Register Activity -----
+    <string name="tittle_Login">Login</string>
+    <string name="text_username">Username</string>
+    <string name="text_password">Password</string>
+    <string name="text_email">Email</string>
+    <string name="text_forgot">Forgot password?</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_register">Register</string>
+    <string name="check_box_remember">Remember me</string>
+    <dimen name="text_tittle">24sp</dimen>
+    // ----- Fragment Home -----
+    <dimen name="text_font">17sp</dimen>
+    // ----- Edit Activity -----
+    <string name="tittle_edit">Edit</string>
+    <string name="text_id">Student ID</string>
+    <string name="text_name">Name</string>
+    <string name="text_gender">Gender</string>
+    <string name="text_male">Male</string>
+    <string name="text_female">Female</string>
+    <string name="text_major">Major</string>
+    <string name="text_address">Address</string>
+    <string name="text_dob">Date of Birth</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_close">Close</string>
+    // ----- Info Activity -----
+    <string name="tittle_info">Information</string>
+    <string name="text_subject">Subject</string>
+    <string name="text_subject_id">Subject ID</string>
+    <string name="text_mark">Mark</string>
+    // ----- Animation -----
+    <integer name="anim_duration_Short">300</integer>
+    <integer name="anim_duration_Long">800</integer>
+</resources>
