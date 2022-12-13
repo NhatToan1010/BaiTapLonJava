@@ -73,6 +73,9 @@ public class HomeViewModel extends AndroidViewModel {
     public void deleteAllMark(){
         mMarkRepo.deleteAll();
     }
+    public void deleteById(String id){
+        mMarkRepo.deleteById(id);
+    }
 
     public LiveData<List<Student>> getStudentList() {
         return mStuList;

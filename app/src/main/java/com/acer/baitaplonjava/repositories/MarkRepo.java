@@ -81,6 +81,9 @@ public class MarkRepo {
     public void deleteAll(){
         dao.deleteAll();
     }
+    public void deleteById(String id){
+        dao.deleteById(id);
+    }
 
     public List<Float> getMarkById(String stuId){
         return dao.getMarkById(stuId);

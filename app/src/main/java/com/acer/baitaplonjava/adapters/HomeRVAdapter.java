@@ -111,7 +111,7 @@ public class HomeRVAdapter extends RecyclerView.Adapter<HomeRVAdapter.HomeViewHo
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 mViewModel.deleteStudent(stu);
-                mViewModel.deleteAllMark();
+                mViewModel.deleteById(stu.getID());
                 Toast.makeText(context, stu.getName()+" has been deleted!",
                         Toast.LENGTH_SHORT).show();
             }

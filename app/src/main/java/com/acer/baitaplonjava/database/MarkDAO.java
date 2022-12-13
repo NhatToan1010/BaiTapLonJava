@@ -27,6 +27,9 @@ public interface MarkDAO {
     @Query("DELETE FROM MARK")
     void deleteAll();
 
+    @Query("DELETE FROM MARK WHERE studentID = :id")
+    void deleteById(String id);
+
     @Query("SELECT * FROM MARK")
     LiveData<List<Mark>> findAll();
 
