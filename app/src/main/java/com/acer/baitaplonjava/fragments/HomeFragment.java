@@ -92,7 +92,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         fabDeleteAll.setOnClickListener(this);
         fabShow.setOnClickListener(this);
 
-
+        if(mAdapter.getItemCount() > 1){
+            tvAnnounce.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void deleteAllItem(){
@@ -144,6 +146,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onStop() {
         super.onStop();
+        if (mAdapter.getItemCount() >= 0){
+            tvAnnounce.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         if (mAdapter.getItemCount() >= 0){
             tvAnnounce.setVisibility(View.INVISIBLE);
         }

@@ -12,9 +12,7 @@ public class Subject implements Serializable {
     @PrimaryKey
     @NonNull
     private String subID;
-
     private String subName;
-
     public Subject() {
     }
 

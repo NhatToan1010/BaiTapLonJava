@@ -13,16 +13,11 @@ public class Student implements Serializable {
     @PrimaryKey
     @NonNull
     private String ID;
-
     @NonNull
     private String name;
-
     private boolean gender;
-
     private String major;
-
     private String address;
-
     private Date dob;
 
     public Student(String ID, String name, boolean gender, String major, String address, Date dob) {

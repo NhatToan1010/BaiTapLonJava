@@ -22,13 +22,11 @@ import java.io.Serializable;
                     onUpdate = ForeignKey.CASCADE)}
 )
 public class Mark implements Serializable {
-
     @NonNull
     private String studentID;
     @NonNull
     private String subjectID;
     private float subMark;
-
     public Mark(@NonNull String studentID, @NonNull String subjectID, float subMark) {
         this.studentID = studentID;
         this.subjectID = subjectID;

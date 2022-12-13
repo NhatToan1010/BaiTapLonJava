@@ -34,10 +34,11 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
 
     private EditText edtID, edtName, edtMajor, edtAddress;
     private TextView edtDob;
-    private RadioButton rBtnMale;
+    private RadioButton rBtnMale, rBtnFemale;
     private Button btnSave;
     private HomeViewModel mViewModel;
     private String date = "";
+    private Date dob;
     private boolean isEdit = false;
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
@@ -55,6 +56,7 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         edtAddress = findViewById(R.id.edtAddress);
         edtDob = (TextView) findViewById(R.id.edtDob);
         rBtnMale = findViewById(R.id.rBtnMale);
+        rBtnFemale = findViewById(R.id.rBtnFemale);
 
         mViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
@@ -62,6 +64,11 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
         btnSave.setOnClickListener(this);
         findViewById(R.id.btnClose).setOnClickListener(this);
         edtDob.setOnClickListener(this);
+
+        getIntentStudent();
+    }
+    @SuppressLint("SetTextI18n")
+    private void getIntentStudent(){
         if(getIntent().getExtras() != null){
             btnSave.setText("Update");
             Student stu = (Student) getIntent().getExtras().get("Student_key");
@@ -69,7 +76,13 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
             edtName.setText(stu.getName());
             edtMajor.setText(stu.getMajor());
             edtAddress.setText(stu.getAddress());
+            date = DateTimeHelper.toString(stu.getDob());
             edtDob.setText(DateTimeHelper.toString(stu.getDob()));
+            if (stu.isGender()){
+                rBtnMale.setChecked(true);
+            }else{
+                rBtnFemale.setChecked(true);
+            }
             isEdit = true;
         }
     }
@@ -99,11 +112,10 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                 datePickerDialog.show();
                 break;
             case R.id.btnSave:
-                String strID = edtID.getText().toString().toUpperCase(Locale.ROOT).trim();
+                String strID = edtID.getText().toString().trim();
                 String strName = edtName.getText().toString().trim();
                 String strMajor = edtMajor.getText().toString().trim();
                 String strAddress = edtAddress.getText().toString().trim();
-                Date dob = null;
                 try {
                     dob = DateTimeHelper.toDate(date);
                 } catch (ParseException e) {
@@ -125,15 +137,17 @@ public class EditActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(this, "Update successful!",
                             Toast.LENGTH_SHORT).show();
                     finish();
-                }
-                if (typeExit(stu)){
-                    Toast.makeText(this, "Identical ID!",
+                }else{
+                    if (typeExit(stu)){
+                        Toast.makeText(this, "Identical ID!",
+                                Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    mViewModel.insertStudent(stu);
+                    Toast.makeText(this, "Save successful!",
                             Toast.LENGTH_SHORT).show();
-                    return;
                 }
-                mViewModel.insertStudent(stu);
-                Toast.makeText(this, "Save successful!",
-                        Toast.LENGTH_SHORT).show();
+
                 finish();
                 break;
             case R.id.btnClose:

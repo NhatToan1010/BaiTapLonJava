@@ -100,7 +100,7 @@ public class HomeRVAdapter extends RecyclerView.Adapter<HomeRVAdapter.HomeViewHo
     private void deleteItem(Student stu){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Delete "+stu.getName()+"?");
-        builder.setMessage("All information will be remove from system.");
+        builder.setMessage("This student will be remove from system.");
         builder.setNegativeButton("Keep", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
